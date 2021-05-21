@@ -5,8 +5,10 @@
 		<p class="description">Lorem ipsum dolor sit amet, consec tetur cing elit. Suspe ndisse suscipit</p>
 
 		<br />
-		<div class="row" style="margin: 0 -20px">
-			<div class="col-md-4" v-for="n in 3" :key="n" style="padding: 20px">
+		<!-- <div class="row carousel" style="margin: 0 -20px">
+    </div> -->
+		<VueSlickCarousel :arrows="true" :dots="true" centerMode :slidesToShow="3" centerPadding="0">
+			<div v-for="n in 8" :key="n" class="property-scroll">
 				<q-card flat bordered>
 					<img src="https://cdn.quasar.dev/img/mountains.jpg" height="200" />
 					<div class="property-statuses">
@@ -52,9 +54,22 @@
 					</q-card-section>
 				</q-card>
 			</div>
-		</div>
+		</VueSlickCarousel>
 	</div>
 </template>
+
+
+<script>
+import VueSlickCarousel from 'vue-slick-carousel';
+import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+// optional style for arrows & dots
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+
+export default {
+	components: { VueSlickCarousel },
+};
+</script>
+
 
 
 <style scoped lang="scss">
@@ -91,6 +106,10 @@
 }
 
 .property {
+	&-scroll {
+		padding: 0 20px;
+	}
+
 	&-statuses {
 		display: flex;
 		column-gap: 10px;
